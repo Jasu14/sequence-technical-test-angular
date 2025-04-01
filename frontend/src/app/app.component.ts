@@ -7,7 +7,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   standalone: true,
   imports: [
     RouterOutlet,
-    SidebarComponent],
+    SidebarComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
