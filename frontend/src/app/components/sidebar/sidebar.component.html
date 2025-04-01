@@ -1,0 +1,12 @@
+<button class="toggle-btn" (click)="toggleMenu()">&#9776;</button>
+<div class="sidebar" [class.open]="isOpen">
+    <button class="toggle-btn toggle-btn-open" (click)="toggleMenu()">&#9776;</button>
+    <nav>
+        <ul>
+            <li><a routerLink="/">Inicio</a></li>
+            <li><a routerLink="/songs">Canciones</a></li>
+            <li><a routerLink="/artists">Canciones</a></li>
+            <li><a routerLink="/companies">Compañías discográficas</a></li>
+        </ul>
+    </nav>
+</div>
