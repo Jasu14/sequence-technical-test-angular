@@ -3,10 +3,10 @@
     <button class="toggle-btn toggle-btn-open" (click)="toggleMenu()">&#9776;</button>
     <nav>
         <ul>
-            <li><a routerLink="/">Inicio</a></li>
-            <li><a routerLink="/songs">Canciones</a></li>
-            <li><a routerLink="/artists">Canciones</a></li>
-            <li><a routerLink="/companies">Compañías discográficas</a></li>
+            <li><a routerLink="/">{{ 'HOME' | translate }}</a></li>
+            <li><a routerLink="/songs">{{ 'SONGS' | translate }}</a></li>
+            <li><a routerLink="/artists">{{ 'ARTISTS' | translate }}</a></li>
+            <li><a routerLink="/companies">{{ 'COMPANIES' | translate }}</a></li>
         </ul>
     </nav>
 </div>
