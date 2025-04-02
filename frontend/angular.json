@@ -53,6 +53,8 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
+              "ssr": false,
+              "prerender": false,
               "sourceMap": true
             }
           },
