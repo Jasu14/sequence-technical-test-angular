@@ -6,6 +6,10 @@
 
     "SEE_DETAILS": "Ver detalles",
     "GO_BACK": "Volver",
+    "DELETE": "Eliminar",
+    "DELETE_CONFIRMATION": "¿Estás seguro de que quieres eliminar este elemento?",
+    "DELETE_CONFIRMATION_OPTION_YES": "Sí",
+    "DELETE_CONFIRMATION_OPTION_NO": "No",
 
     "SONG_DETAILS": "Detalles de canción",
     "ARTIST_DETAILS": "Detalles de artista",

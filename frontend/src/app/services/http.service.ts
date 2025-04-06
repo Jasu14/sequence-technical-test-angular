@@ -55,4 +55,10 @@ export class HttpService {
     
     return firstValueFrom(this.http.put<Entity>(`${this.apiUrl}/${entity}/${formData.id}`, formData));
   }
+
+  deleteElement(entity: string, id: string): Promise<Entity> {
+    this.loadingSubject.next(true);
+    
+    return firstValueFrom(this.http.delete<Entity>(`${this.apiUrl}/${entity}/${id}`));
+  }
 }

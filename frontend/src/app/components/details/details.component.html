@@ -26,6 +26,8 @@
                             <span *ngIf="currentPath == 'companies'">{{ 'COMPANY_UPDATE' | translate }}</span>
                         </a>
                         <br>
+                        <a [href]="getDeleteLink(element.id)" class="stretched-link">{{ 'DELETE' | translate }}</a>
+                        <br>
                         <a [href]="currentPath" class="stretched-link">{{ 'GO_BACK' | translate }}</a>
                     </div>
                 </div>
