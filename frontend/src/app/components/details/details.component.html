@@ -4,7 +4,7 @@
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body">
-                    <div class="card" *ngFor="let element of listElements$ | async">
+                    <div class="card">
                         <h3 class="card-title">
                             <span *ngIf="currentPath == 'songs'">{{ element.title }} ({{ element.artist }})</span>
                             <span *ngIf="currentPath == 'artists'">{{ element.name }}</span>
@@ -20,7 +20,7 @@
                             </p>
                         </div>
 
-                        <a [href]="getDetailsLink(element.id)" class="stretched-link">{{ 'SEE_DETAILS' | translate }}</a>
+                        <a [href]="currentPath" class="stretched-link">{{ 'GO_BACK' | translate }}</a>
                     </div>
                 </div>
             </div>
