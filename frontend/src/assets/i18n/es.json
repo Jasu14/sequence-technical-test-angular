@@ -2,5 +2,11 @@
     "HOME": "Inicio",
     "SONGS": "Canciones",
     "ARTISTS": "Artistas",
-    "COMPANIES": "Compañías discográficas"
+    "COMPANIES": "Compañías discográficas",
+
+    "SEE_DETAILS": "Ver detalles",
+    "GO_BACK": "Volver",
+    "SONG_DETAILS": "Detalles de canción",
+    "ARTIST_DETAILS": "Detalles de artista",
+    "COMPANY_DETAILS": "Detalles de compañía"
 }

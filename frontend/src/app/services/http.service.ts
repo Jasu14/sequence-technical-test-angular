@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, catchError, finalize, firstValueFrom, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, finalize, firstValueFrom, map, Observable } from 'rxjs';
 import { Song } from '../models/song';
 import { Artist } from '../models/artist';
 import { Company } from '../models/company';
@@ -15,7 +15,7 @@ export class HttpService {
   private itemsSubject = new BehaviorSubject<Entity[]>([]);
   public items$: Observable<Entity[]> = this.itemsSubject.asObservable();
 
-  private loadingSubject = new BehaviorSubject<boolean>(false);
+  public loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$ = this.loadingSubject.asObservable();
 
   private apiUrl = 'http://localhost:3001';
@@ -36,5 +36,11 @@ export class HttpService {
       .subscribe(items => {
         this.itemsSubject.next(items);
       });
+  }
+
+  getDetails(entity: string, id:string): Promise<Entity> {
+    this.loadingSubject.next(true);
+    
+    return firstValueFrom(this.http.get<Entity>(`${this.apiUrl}/${entity}/${id}`));
   }
 }
