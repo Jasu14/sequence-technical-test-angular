@@ -1,4 +1,9 @@
 <div class="container mt-4">
+    <a [href]="getCreateLink()" class="stretched-link">
+        <span *ngIf="currentPath == 'songs'">{{ 'SONG_CREATE' | translate }}</span>
+        <span *ngIf="currentPath == 'artists'">{{ 'ARTIST_CREATE' | translate }}</span>
+        <span *ngIf="currentPath == 'companies'">{{ 'COMPANY_CREATE' | translate }}</span>
+    </a>
     <app-spinner *ngIf="loading$ | async"></app-spinner>
     <div *ngIf="!(loading$ | async)" class="row">
         <div class="col-md-4">

@@ -32,4 +32,8 @@ export class DetailsComponent {
       this.httpService.loadingSubject.next(false);
     });
   }
+
+  getUpdateLink(id: string) {
+    return `${this.currentPath}/${id}/update`;
+  }
 }
