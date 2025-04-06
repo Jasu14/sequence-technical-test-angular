@@ -1,5 +1,6 @@
 <div class="container mt-4">
-    <div class="row">
+    <app-spinner *ngIf="loading$ | async"></app-spinner>
+    <div *ngIf="!(loading$ | async)" class="row">
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body">
