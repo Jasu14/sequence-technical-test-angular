@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { filter } from 'rxjs/operators';
+import { RouteService } from '../../services/route.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ import { filter } from 'rxjs/operators';
 export class HeaderComponent {
   pageTitle: string = '';
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private routeService: RouteService) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
