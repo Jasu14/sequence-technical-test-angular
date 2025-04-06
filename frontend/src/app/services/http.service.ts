@@ -43,4 +43,16 @@ export class HttpService {
     
     return firstValueFrom(this.http.get<Entity>(`${this.apiUrl}/${entity}/${id}`));
   }
+
+  createElement(entity: string, formData: Entity): Promise<Entity> {
+    this.loadingSubject.next(true);
+    
+    return firstValueFrom(this.http.post<Entity>(`${this.apiUrl}/${entity}`, formData));
+  }
+
+  updateElement(entity: string, formData: Entity): Promise<Entity> {
+    this.loadingSubject.next(true);
+    
+    return firstValueFrom(this.http.put<Entity>(`${this.apiUrl}/${entity}/${formData.id}`, formData));
+  }
 }

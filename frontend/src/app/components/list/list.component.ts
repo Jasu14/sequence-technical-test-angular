@@ -34,4 +34,8 @@ export class ListComponent implements OnInit {
   getDetailsLink(id: string) {
     return `${this.currentPath}/${id}`;
   }
+
+  getCreateLink() {
+    return `${this.currentPath}/create`;
+  }
 }

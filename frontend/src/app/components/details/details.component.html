@@ -20,6 +20,12 @@
                             </p>
                         </div>
 
+                        <a [href]="getUpdateLink(element.id)" class="stretched-link">
+                            <span *ngIf="currentPath == 'songs'">{{ 'SONG_UPDATE' | translate }}</span>
+                            <span *ngIf="currentPath == 'artists'">{{ 'ARTIST_UPDATE' | translate }}</span>
+                            <span *ngIf="currentPath == 'companies'">{{ 'COMPANY_UPDATE' | translate }}</span>
+                        </a>
+                        <br>
                         <a [href]="currentPath" class="stretched-link">{{ 'GO_BACK' | translate }}</a>
                     </div>
                 </div>
