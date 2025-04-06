@@ -3,38 +3,24 @@
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body">
-                    <ng-container *ngTemplateOutlet="templateToUse"></ng-container>
+                    <div class="card" *ngFor="let element of listElements$ | async">
+                        <h3 class="card-title">
+                            <span *ngIf="currentPath == 'songs'">{{ element.title }} ({{ element.artist }})</span>
+                            <span *ngIf="currentPath == 'artists'">{{ element.name }}</span>
+                            <span *ngIf="currentPath == 'companies'">{{ element.name }} ({{ element.country }})</span>
+                        </h3>
+                        <img *ngIf="currentPath == 'songs'" [src]="element.poster" alt="Poster" class="card-img">
+                        <img *ngIf="currentPath == 'artists'" [src]="element.img" alt="Image" class="card-img">
+                        <div class="card-content">
+                            <p class="card-subtitle">
+                                <span *ngIf="currentPath == 'songs'">{{ element.year }}Genres</span>
+                                <span *ngIf="currentPath == 'artists'">{{ element.year }}Songs</span>
+                                <span *ngIf="currentPath == 'companies'">{{ element.year }}Genres</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<ng-template #cardSongsViewTemplate>
-    <div class="card" *ngFor="let element of listElements">
-        <h3 class="card-title">{{ element.title }} ({{ element.artist }})</h3>
-        <img [src]="element.poster" alt="Poster" class="card-img">
-        <div class="card-content">
-            <p class="card-subtitle">{{ element.year }}Genres</p>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template #cardArtistsViewTemplate>
-    <div class="card" *ngFor="let element of listElements">
-        <h3 class="card-title">{{ element.name }}</h3>
-        <img [src]="element.img" alt="Image" class="card-img">
-        <div class="card-content">
-            <p class="card-subtitle">{{ element.year }}Songs</p>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template #cardCompaniesViewTemplate>
-    <div class="card" *ngFor="let element of listElements">
-        <h3 class="card-title">{{ element.name }} ({{ element.country }})</h3>
-        <div class="card-content">
-            <p class="card-subtitle">{{ element.year }}Songs</p>
-        </div>
-    </div>
-</ng-template>
