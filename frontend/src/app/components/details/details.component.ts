@@ -36,4 +36,8 @@ export class DetailsComponent {
   getUpdateLink(id: string) {
     return `${this.currentPath}/${id}/update`;
   }
+
+  getDeleteLink(id: string) {
+    return `${this.currentPath}/${id}/delete-confirmation`;
+  }
 }
