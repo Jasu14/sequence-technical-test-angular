@@ -14,7 +14,18 @@
                         <img *ngIf="currentPath == 'artists'" [src]="element.img" alt="Image" class="card-img">
                         <div class="card-content">
                             <div *ngFor="let key of objectKeys(element)">
-                                <p>{{ key }}: {{ element[key] }}</p>
+                                <ul *ngIf="key == 'artist' || key == 'songs'; else normalField">
+                                    <p>{{ key }}:</p>
+                                    <ng-container *ngFor="let listItem of listElements$ | async; let i = index">
+                                        <li *ngIf="element.artist == listItem.id || (element.songs && element.songs.includes(listItem.id))">
+                                            {{ listItem.name || listItem.title }}
+                                        </li>
+                                    </ng-container>
+                                </ul>
+
+                                <ng-template #normalField>
+                                    <p>{{ key }}: {{ element[key] }}</p>
+                                </ng-template>
                             </div>
                         </div>
 
