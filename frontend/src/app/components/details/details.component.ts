@@ -40,4 +40,10 @@ export class DetailsComponent {
   getDeleteLink(id: string) {
     return `${this.currentPath}/${id}/delete-confirmation`;
   }
+
+  objectKeys(obj: any) {
+    return Object.keys(obj).filter((key) => {
+      return key != "id" && key != "img" && key != "poster";
+    });
+  }
 }
