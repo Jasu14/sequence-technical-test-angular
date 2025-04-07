@@ -21,6 +21,7 @@ export class DetailsComponent {
 
   currentPath: string = "";
   element: any;
+  listElements$: any = this.httpService.items$;
   loading$ = this.httpService.loading$;
 
   constructor(private httpService: HttpService, private routeService: RouteService, private activatedRoute: ActivatedRoute) {}
@@ -29,6 +30,13 @@ export class DetailsComponent {
 
     this.httpService.getDetails(this.currentPath, this.routeService.getIdFromRoute(this.activatedRoute)).then((response) => {
       this.element = response;
+
+      switch(this.currentPath) {
+        case "songs": this.httpService.getList("artists"); break;
+        case "artists": this.httpService.getList("songs"); break;
+        case "companies": this.httpService.getList("songs"); break;
+      }
+
       this.httpService.loadingSubject.next(false);
     });
   }
