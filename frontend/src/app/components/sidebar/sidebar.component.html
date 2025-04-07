@@ -1,0 +1,12 @@
+<button class="toggle-btn" (click)="toggleMenu()">&#9776;</button>
+<div class="sidebar" [class.open]="isOpen">
+    <button class="toggle-btn toggle-btn-open" (click)="toggleMenu()">&#9776;</button>
+    <nav>
+        <ul>
+            <li><a href="/">{{ 'HOME' | translate }}</a></li>
+            <li><a href="/songs">{{ 'SONGS' | translate }}</a></li>
+            <li><a href="/artists">{{ 'ARTISTS' | translate }}</a></li>
+            <li><a href="/companies">{{ 'COMPANIES' | translate }}</a></li>
+        </ul>
+    </nav>
+</div>

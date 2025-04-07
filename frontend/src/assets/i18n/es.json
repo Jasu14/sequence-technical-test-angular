@@ -1,0 +1,45 @@
+{
+    "HOME": "Inicio",
+    "SONGS": "Canciones",
+    "ARTISTS": "Artistas",
+    "COMPANIES": "Compañías discográficas",
+
+    "SEE_DETAILS": "Ver detalles",
+    "GO_BACK": "Volver",
+    "DELETE": "Eliminar",
+    "DELETE_CONFIRMATION": "¿Estás seguro de que quieres eliminar este elemento?",
+    "DELETE_CONFIRMATION_OPTION_YES": "Sí",
+    "DELETE_CONFIRMATION_OPTION_NO": "No",
+
+    "SONG_DETAILS": "Detalles de canción",
+    "ARTIST_DETAILS": "Detalles de artista",
+    "COMPANY_DETAILS": "Detalles de compañía",
+    "SONG_CREATE": "Añadir canción",
+    "ARTIST_CREATE": "Añadir artista",
+    "COMPANY_CREATE": "Añadir compañía",
+    "SONG_UPDATE": "Actualizar canción",
+    "ARTIST_UPDATE": "Actualizar artista",
+    "COMPANY_UPDATE": "Actualizar compañía",
+
+    "SONG_TITLE": "Título",
+    "SONG_POSTER": "Póster",
+    "SONG_GENRE": "Género",
+    "SONG_YEAR": "Año",
+    "SONG_DURATION": "Duración",
+    "SONG_RATING": "Valoración",
+    "SONG_ARTIST": "Artista",
+
+    "ARTIST_NAME": "Nombre",
+    "ARTIST_BORNCITY": "Ciudad de nacimiento",
+    "ARTIST_BIRTHDATE": "Día de nacimiento",
+    "ARTIST_IMG": "Imagen",
+    "ARTIST_RATING": "Valoración",
+    "ARTIST_SONGS": "Canciones",
+
+    "COMPANY_NAME": "Nombre",
+    "COMPANY_COUNTRY": "País",
+    "COMPANY_CREATEYEAR": "Año de creación",
+    "COMPANY_EMPLOYEES": "Empleados",
+    "COMPANY_RATING": "Valoración",
+    "COMPANY_SONGS": "Canciones"
+}

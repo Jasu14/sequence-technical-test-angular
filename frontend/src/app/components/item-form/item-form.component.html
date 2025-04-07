@@ -1,0 +1,100 @@
+<app-spinner *ngIf="loading$ | async"></app-spinner>
+
+<form *ngIf="!(loading$ | async) && itemForm" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+
+    <div *ngIf="currentPath == 'songs'">
+        <div>
+            <label for="title">{{ 'SONG_TITLE' | translate }}</label>
+            <input formControlName="title" id="title" />
+        </div>
+        <div>
+            <label for="poster">{{ 'SONG_POSTER' | translate }}</label>
+            <input formControlName="poster" id="poster" />
+        </div>
+        <div>
+            <label for="genre">{{ 'SONG_GENRE' | translate }}</label>
+            <input formControlName="genre" id="genre" />
+        </div>
+        <div>
+            <label for="year">{{ 'SONG_YEAR' | translate }}</label>
+            <input formControlName="year" id="year" />
+        </div>
+        <div>
+            <label for="duration">{{ 'SONG_DURATION' | translate }}</label>
+            <input formControlName="duration" id="duration" />
+        </div>
+        <div>
+            <label for="rating">{{ 'SONG_RATING' | translate }}</label>
+            <input formControlName="rating" id="rating" />
+        </div>
+        <div>
+            <label for="artist">{{ 'SONG_ARTIST' | translate }}</label>
+            <select formControlName="artist" id="artist">
+                <option *ngFor="let i of listElements$ | async" [value]="i.id">{{ i.name }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div *ngIf="currentPath == 'artists'">
+        <div>
+            <label for="name">{{ 'ARTIST_NAME' | translate }}</label>
+            <input formControlName="name" id="name" />
+        </div>
+        <div>
+            <label for="bornCity">{{ 'ARTIST_BORNCITY' | translate }}</label>
+            <input formControlName="bornCity" id="bornCity" />
+        </div>
+        <div>
+            <label for="birthdate">{{ 'ARTIST_BIRTHDATE' | translate }}</label>
+            <input formControlName="birthdate" id="birthdate" />
+        </div>
+        <div>
+            <label for="img">{{ 'ARTIST_IMG' | translate }}</label>
+            <input formControlName="img" id="img" />
+        </div>
+        <div>
+            <label for="rating">{{ 'ARTIST_RATING' | translate }}</label>
+            <input formControlName="rating" id="rating" />
+        </div>
+        <div>
+            <label for="songs">{{ 'ARTIST_SONGS' | translate }}</label>
+            <select formControlName="songs" id="songs" multiple>
+                <option *ngFor="let i of listElements$ | async" [value]="i.id">{{ i.title }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div *ngIf="currentPath == 'companies'">
+        <div>
+            <label for="name">{{ 'COMPANY_NAME' | translate }}</label>
+            <input formControlName="name" id="name" />
+        </div>
+        <div>
+            <label for="country">{{ 'COMPANY_COUNTRY' | translate }}</label>
+            <input formControlName="country" id="country" />
+        </div>
+        <div>
+            <label for="createYear">{{ 'COMPANY_CREATEYEAR' | translate }}</label>
+            <input formControlName="createYear" id="createYear" />
+        </div>
+        <div>
+            <label for="employees">{{ 'COMPANY_EMPLOYEES' | translate }}</label>
+            <input formControlName="employees" id="employees" />
+        </div>
+        <div>
+            <label for="rating">{{ 'COMPANY_RATING' | translate }}</label>
+            <input formControlName="rating" id="rating" />
+        </div>
+        <div>
+            <label for="songs">{{ 'COMPANY_SONGS' | translate }}</label>
+            <select formControlName="songs" id="songs" multiple>
+                <option *ngFor="let i of listElements$ | async" [value]="i.id">{{ i.title }}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="itemForm.invalid">Submit</button>
+    <br>
+    <a *ngIf="isEditMode && item" [href]="getDetailsLink(item.id)" class="stretched-link">{{ 'GO_BACK' | translate }}</a>
+    <a *ngIf="!isEditMode || !item" [href]="currentPath" class="stretched-link">{{ 'GO_BACK' | translate }}</a>
+</form>

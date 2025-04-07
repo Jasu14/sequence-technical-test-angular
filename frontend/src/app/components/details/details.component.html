@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <app-spinner *ngIf="loading$ | async"></app-spinner>
+    <div *ngIf="!(loading$ | async)" class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card">
+                        <h3 class="card-title">
+                            <span *ngIf="currentPath == 'songs'">{{ element.title }} ({{ element.artistId }})</span>
+                            <span *ngIf="currentPath == 'artists'">{{ element.name }}</span>
+                            <span *ngIf="currentPath == 'companies'">{{ element.name }} ({{ element.country }})</span>
+                        </h3>
+                        <img *ngIf="currentPath == 'songs'" [src]="element.poster" alt="Poster" class="card-img">
+                        <img *ngIf="currentPath == 'artists'" [src]="element.img" alt="Image" class="card-img">
+                        <div class="card-content">
+                            <div *ngFor="let key of objectKeys(element)">
+                                <ul *ngIf="key == 'artist' || key == 'songs'; else normalField">
+                                    <p>{{ key }}:</p>
+                                    <ng-container *ngFor="let listItem of listElements$ | async; let i = index">
+                                        <li *ngIf="element.artist == listItem.id || (element.songs && element.songs.includes(listItem.id))">
+                                            {{ listItem.name || listItem.title }}
+                                        </li>
+                                    </ng-container>
+                                </ul>
+
+                                <ng-template #normalField>
+                                    <p>{{ key }}: {{ element[key] }}</p>
+                                </ng-template>
+                            </div>
+                        </div>
+
+                        <a [href]="getUpdateLink(element.id)" class="stretched-link">
+                            <span *ngIf="currentPath == 'songs'">{{ 'SONG_UPDATE' | translate }}</span>
+                            <span *ngIf="currentPath == 'artists'">{{ 'ARTIST_UPDATE' | translate }}</span>
+                            <span *ngIf="currentPath == 'companies'">{{ 'COMPANY_UPDATE' | translate }}</span>
+                        </a>
+                        <br>
+                        <a [href]="getDeleteLink(element.id)" class="stretched-link">{{ 'DELETE' | translate }}</a>
+                        <br>
+                        <a [href]="currentPath" class="stretched-link">{{ 'GO_BACK' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <a [href]="getCreateLink()" class="stretched-link">
+        <span *ngIf="currentPath == 'songs'">{{ 'SONG_CREATE' | translate }}</span>
+        <span *ngIf="currentPath == 'artists'">{{ 'ARTIST_CREATE' | translate }}</span>
+        <span *ngIf="currentPath == 'companies'">{{ 'COMPANY_CREATE' | translate }}</span>
+    </a>
+    <app-spinner *ngIf="loading$ | async"></app-spinner>
+    <div *ngIf="!(loading$ | async)" class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card" *ngFor="let element of listElements$ | async">
+                        <h3 class="card-title">
+                            <span *ngIf="currentPath == 'songs'">{{ element.title }} <a [href]="'artists/' + element.artist" class="stretched-link">{{ 'SONG_ARTIST' | translate }}</a></span>
+                            <span *ngIf="currentPath == 'artists'">{{ element.name }}</span>
+                            <span *ngIf="currentPath == 'companies'">{{ element.name }} ({{ element.country }})</span>
+                        </h3>
+                        <img *ngIf="currentPath == 'songs'" [src]="element.poster" alt="Poster" class="card-img">
+                        <img *ngIf="currentPath == 'artists'" [src]="element.img" alt="Image" class="card-img">
+                        <div class="card-content">
+                            <p class="card-subtitle">
+                                <span *ngIf="currentPath == 'songs'">{{ element.genre }}</span>
+                            </p>
+                        </div>
+
+                        <a [href]="getDetailsLink(element.id)" class="stretched-link">{{ 'SEE_DETAILS' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
