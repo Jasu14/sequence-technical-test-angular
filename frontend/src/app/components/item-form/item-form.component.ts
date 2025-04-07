@@ -22,7 +22,9 @@ import { TranslateModule } from '@ngx-translate/core';
 export class ItemFormComponent {
 
   currentPath: string = "";
+  listElements$: any = this.httpService.items$;
   item: any;
+  itemsForSelector: any;
   itemForm!: FormGroup;
   loading$ = this.httpService.loading$;
   isEditMode: boolean = false;
@@ -35,6 +37,8 @@ export class ItemFormComponent {
 
     switch(this.currentPath) {
       case "songs":
+        this.httpService.getList("artists");
+
         this.itemForm = this.fb.group({
           title: ['', Validators.required],
           poster: ['', Validators.required],
@@ -46,23 +50,27 @@ export class ItemFormComponent {
         });
       break;
       case "artists":
+        this.httpService.getList("songs");
+
         this.itemForm = this.fb.group({
           name: ['', Validators.required],
           bornCity: ['', Validators.required],
           birthdate: ['', Validators.required],
           img: ['', Validators.required],
           rating: [0, Validators.required],
-          songs: ['', Validators.required]
+          songs: [[], Validators.required]
         });
       break;
       case "companies":
+        this.httpService.getList("songs");
+
         this.itemForm = this.fb.group({
           name: ['', Validators.required],
           country: ['', Validators.required],
           createYear: ['', Validators.required],
           employees: [1900, Validators.required],
           rating: ['', Validators.required],
-          songs: ['', Validators.required]
+          songs: [[], Validators.required]
         });
       break;
     }
