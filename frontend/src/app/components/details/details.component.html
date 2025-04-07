@@ -6,18 +6,16 @@
                 <div class="card-body">
                     <div class="card">
                         <h3 class="card-title">
-                            <span *ngIf="currentPath == 'songs'">{{ element.title }} ({{ element.artist }})</span>
+                            <span *ngIf="currentPath == 'songs'">{{ element.title }} ({{ element.artistId }})</span>
                             <span *ngIf="currentPath == 'artists'">{{ element.name }}</span>
                             <span *ngIf="currentPath == 'companies'">{{ element.name }} ({{ element.country }})</span>
                         </h3>
                         <img *ngIf="currentPath == 'songs'" [src]="element.poster" alt="Poster" class="card-img">
                         <img *ngIf="currentPath == 'artists'" [src]="element.img" alt="Image" class="card-img">
                         <div class="card-content">
-                            <p class="card-subtitle">
-                                <span *ngIf="currentPath == 'songs'">{{ element.year }}Genres</span>
-                                <span *ngIf="currentPath == 'artists'">{{ element.year }}Songs</span>
-                                <span *ngIf="currentPath == 'companies'">{{ element.year }}Genres</span>
-                            </p>
+                            <div *ngFor="let key of objectKeys(element)">
+                                <p>{{ key }}: {{ element[key] }}</p>
+                            </div>
                         </div>
 
                         <a [href]="getUpdateLink(element.id)" class="stretched-link">
