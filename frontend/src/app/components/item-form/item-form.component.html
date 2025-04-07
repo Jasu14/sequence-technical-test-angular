@@ -29,7 +29,9 @@
         </div>
         <div>
             <label for="artist">{{ 'SONG_ARTIST' | translate }}</label>
-            <input formControlName="artist" id="artist" />
+            <select formControlName="artist" id="artist">
+                <option *ngFor="let i of listElements$ | async" [value]="i.id">{{ i.name }}</option>
+            </select>
         </div>
     </div>
 
@@ -56,7 +58,9 @@
         </div>
         <div>
             <label for="songs">{{ 'ARTIST_SONGS' | translate }}</label>
-            <input formControlName="songs" id="songs" />
+            <select formControlName="songs" id="songs" multiple>
+                <option *ngFor="let i of listElements$ | async" [value]="i.id">{{ i.title }}</option>
+            </select>
         </div>
     </div>
 
@@ -83,12 +87,14 @@
         </div>
         <div>
             <label for="songs">{{ 'COMPANY_SONGS' | translate }}</label>
-            <input formControlName="songs" id="songs" />
+            <select formControlName="songs" id="songs" multiple>
+                <option *ngFor="let i of listElements$ | async" [value]="i.id">{{ i.title }}</option>
+            </select>
         </div>
     </div>
 
     <button type="submit" [disabled]="itemForm.invalid">Submit</button>
     <br>
-    <a *ngIf="isEditMode" [href]="getDetailsLink(item.id)" class="stretched-link">{{ 'GO_BACK' | translate }}</a>
-    <a *ngIf="!isEditMode" [href]="currentPath" class="stretched-link">{{ 'GO_BACK' | translate }}</a>
+    <a *ngIf="isEditMode && item" [href]="getDetailsLink(item.id)" class="stretched-link">{{ 'GO_BACK' | translate }}</a>
+    <a *ngIf="!isEditMode || !item" [href]="currentPath" class="stretched-link">{{ 'GO_BACK' | translate }}</a>
 </form>
